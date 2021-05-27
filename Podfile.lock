@@ -1,0 +1,37 @@
+PODS:
+  - CZBCycleView (0.0.3):
+    - Kingfisher
+  - HandyJSON (5.0.2)
+  - Kingfisher (6.3.0)
+  - SnapKit (4.2.0)
+
+DEPENDENCIES:
+  - CZBCycleView (from `https://gitlab.newlink.com/ios/czbcycleview.git`, branch `feature/ios10`)
+  - HandyJSON
+  - SnapKit (= 4.2.0)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - HandyJSON
+    - Kingfisher
+    - SnapKit
+
+EXTERNAL SOURCES:
+  CZBCycleView:
+    :branch: feature/ios10
+    :git: https://gitlab.newlink.com/ios/czbcycleview.git
+
+CHECKOUT OPTIONS:
+  CZBCycleView:
+    :commit: 3815bdd5eecb43e066d31af7946a886b40939cd9
+    :git: https://gitlab.newlink.com/ios/czbcycleview.git
+
+SPEC CHECKSUMS:
+  CZBCycleView: d6842645eb39bd8815c6a7985c71cb5e1476b36f
+  HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
+  Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+
+PODFILE CHECKSUM: 55d1fb531ba71bb22c800c5a92984360a972b7a6
+
+COCOAPODS: 1.10.1

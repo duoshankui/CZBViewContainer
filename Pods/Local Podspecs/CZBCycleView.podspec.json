@@ -1,0 +1,26 @@
+{
+  "name": "CZBCycleView",
+  "version": "0.0.3",
+  "summary": "轮播工具 fork自ZCycleView .",
+  "description": "轮播工具",
+  "homepage": "http://git.czb365.com/ios/czbcycleview.git",
+  "license": "",
+  "authors": {
+    "bianzhifeng": "bianzhifeng@czb365.com"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source": {
+    "git": "http://git.czb365.com/ios/czbcycleview.git",
+    "tag": "0.0.3"
+  },
+  "source_files": "CycleViewFoundation/**/*.swift",
+  "swift_versions": "5.0",
+  "dependencies": {
+    "Kingfisher": [
+
+    ]
+  },
+  "swift_version": "5.0"
+}
