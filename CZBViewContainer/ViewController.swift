@@ -9,14 +9,50 @@ import UIKit
 import CZBCycleView
 import SnapKit
 
-class ViewController: UIViewController, ContainerViewProtocol {
+public let ServerUrl = "https://appdynamiccontainer.oss-cn-beijing.aliyuncs.com/test.autolayout/config.json"
+
+class ViewController: UIViewController {
+    
+//    var txtLabel =
+    lazy var txtLabel: UILabel = {
+        let label = UILabel(frame: CGRect(x: 20, y: 400, width: 300, height: 50))
+        label.textAlignment = .center
+        label.backgroundColor = .gray
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        let model = JsonTools.shared.readLocalJson(fileName: "local.json")
-//        let tempView = ContainerView(with: model!)
+//        loadLocalFile()
+        loadNetWorkData()
+        
+        view.addSubview(txtLabel)
+    }
+    
+    func loadLocalFile() {
+        let model = JsonTools.shared.readLocalJson(fileName: "local1.json")
+        handleRequestData(model: model!)
+    }
+    
+    func loadNetWorkData() {
+        let url = URL(string: ServerUrl)!
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let json = String(data: data! as Data, encoding: .utf8) else {
+                return
+            }
+            
+            if let model = ContainerItem.deserialize(from: json) {
+                DispatchQueue.main.async {
+                    self.handleRequestData(model: model)
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    func handleRequestData(model: ContainerItem) {
         let tempView = ContainerView(frame: .zero)
         tempView.setModel(model)
         tempView.backgroundColor = .gray
@@ -29,27 +65,17 @@ class ViewController: UIViewController, ContainerViewProtocol {
             $0.width.equalTo(tempView.viewWidth)
             $0.height.equalTo(tempView.viewHeight)
         })
-        
-        let testBtn = UIButton(frame: .zero)
-        testBtn.backgroundColor = .red
-        view.addSubview(testBtn)
-        testBtn.snp.makeConstraints({
-            $0.left.equalTo(100)
-            $0.top.equalTo(tempView.snp.bottom).offset(50)
-            $0.width.equalTo(100)
-            $0.height.equalTo(50)
-        })
     }
-        
+}
+
+extension ViewController: ContainerViewProtocol {
     func imgViewDidClick(_ imgView: UIImageView, actionUrl: String?) {
         print("跳转 --\(actionUrl ?? "")")
+        txtLabel.text = actionUrl
     }
     
     func cycleViewDidClick(_ cycleView: ZCycleView, actionUrl: String?) {
         print("跳转 --\(actionUrl ?? "")")
+        txtLabel.text = actionUrl
     }
-}
-
-extension ViewController {
-    
 }

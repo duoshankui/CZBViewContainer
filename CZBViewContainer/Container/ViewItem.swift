@@ -26,17 +26,30 @@ struct ViewItem: HandyJSON {
     var h: Float = 0
     /// 边框圆角
     var sb: Border?
-    /// banner 轮播时间 单位ms
-    var tm: Int?
-    /// actionUrl
-    var au: String?
-    var aus: [String]?
-    var src: String?
+    var pp: Props?
+    var data: Any?
 }
 
 struct Border: HandyJSON {
-    var topLeft: Float = 0
-    var topRight: Float = 0
-    var bottomLeft: Float = 0
-    var bottomRight: Float = 0
+    var lt: Float = 0
+    var lb: Float = 0
+    var rt: Float = 0
+    var rb: Float = 0
+}
+
+struct Props: HandyJSON {
+    /// banner 轮播时间 单位ms
+    var tm: Int?
+    /// 填充模式
+    var ft: String?
+}
+
+struct ImgItem {
+    var src: String?
+    var au: String?
+    
+    init(dict: [String: Any]?) {
+        self.src = dict?["src"] as? String
+        self.au = dict?["au"] as? String
+    }
 }

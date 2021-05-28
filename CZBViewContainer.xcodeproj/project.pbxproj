@@ -18,6 +18,7 @@
 		044D55FF265E33E00054E718 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D55FE265E33E00054E718 /* ContainerView.swift */; };
 		044D5604265E44AA0054E718 /* UIView+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D5603265E44AA0054E718 /* UIView+Utils.swift */; };
 		044D5607265F3CBE0054E718 /* UIColor+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D5606265F3CBE0054E718 /* UIColor+Utils.swift */; };
+		044D565D2660CAF10054E718 /* local1.json in Resources */ = {isa = PBXBuildFile; fileRef = 044D565C2660CAF10054E718 /* local1.json */; };
 		F6088169D9E6882B50692E96 /* Pods_CZBViewContainer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D340BF51E06632C47759130 /* Pods_CZBViewContainer.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		044D55FE265E33E00054E718 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		044D5603265E44AA0054E718 /* UIView+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utils.swift"; sourceTree = "<group>"; };
 		044D5606265F3CBE0054E718 /* UIColor+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Utils.swift"; sourceTree = "<group>"; };
+		044D565C2660CAF10054E718 /* local1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = local1.json; sourceTree = "<group>"; };
 		244619B2FEE38E6205DF74A1 /* Pods-CZBViewContainer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CZBViewContainer.debug.xcconfig"; path = "Target Support Files/Pods-CZBViewContainer/Pods-CZBViewContainer.debug.xcconfig"; sourceTree = "<group>"; };
 		9D340BF51E06632C47759130 /* Pods_CZBViewContainer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CZBViewContainer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A05173EF51BB5FE52AF0C8A6 /* Pods-CZBViewContainer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CZBViewContainer.release.xcconfig"; path = "Target Support Files/Pods-CZBViewContainer/Pods-CZBViewContainer.release.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			children = (
 				044D55C5265E24DD0054E718 /* ViewItem.swift */,
 				044D55CD265E27D10054E718 /* local.json */,
+				044D565C2660CAF10054E718 /* local1.json */,
 				044D55D0265E28590054E718 /* JsonTools.swift */,
 				044D55FE265E33E00054E718 /* ContainerView.swift */,
 				044D5603265E44AA0054E718 /* UIView+Utils.swift */,
@@ -174,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				044D55B0265E20A00054E718 /* LaunchScreen.storyboard in Resources */,
+				044D565D2660CAF10054E718 /* local1.json in Resources */,
 				044D55CE265E27D10054E718 /* local.json in Resources */,
 				044D55AD265E20A00054E718 /* Assets.xcassets in Resources */,
 				044D55AB265E209E0054E718 /* Main.storyboard in Resources */,

@@ -1,0 +1,96 @@
+{
+    "i": "templateId",
+    "w": 320,
+    "ele": [
+        {
+            "t": 6,
+            "l": 5.5,
+            "w": 155,
+            "h": 127,
+            "sb": {
+                "lt": 0,
+                "lb": 0,
+                "rt": 0,
+                "rb": 0
+            },
+            "pp": {
+                "ft": "contain"
+            },
+            "pt": "image",
+            "data": {
+                "src": "https://test-hubert.oss-cn-beijing.aliyuncs.com/public/photo/a1.jpg",
+                "au": "https://image.baidu.com/"
+            }
+        },
+        {
+            "t": 139,
+            "l": 5.5,
+            "w": 307,
+            "h": 81,
+            "sb": {
+                "lt": 0,
+                "lb": 0,
+                "rt": 0,
+                "rb": 0
+            },
+            "pp": {
+                "tm": 4000
+            },
+            "pt": "banner",
+            "data": [
+                {
+                    "src": "https://test-hubert.oss-cn-beijing.aliyuncs.com/public/photo/a2.jpg",
+                    "au": "https://image.baidu.com/"
+                },
+                {
+                    "src": "https://test-hubert.oss-cn-beijing.aliyuncs.com/public/photo/a3.jpg",
+                    "au": "https://image.baidu.com/"
+                },
+                {
+                    "src": "https://test-hubert.oss-cn-beijing.aliyuncs.com/public/photo/a4.jpg",
+                    "au": "https://image.baidu.com/"
+                }
+            ]
+        },
+        {
+            "t": 6,
+            "l": 167.5,
+            "w": 145,
+            "h": 62,
+            "sb": {
+                "lt": 0,
+                "lb": 0,
+                "rt": 0,
+                "rb": 0
+            },
+            "pp": {
+                "ft": "contain"
+            },
+            "pt": "image",
+            "data": {
+                "src": "https://test-hubert.oss-cn-beijing.aliyuncs.com/public/photo/a1.jpg",
+                "au": "https://image.baidu.com/"
+            }
+        },
+        {
+            "t": 71,
+            "l": 167.5,
+            "w": 145,
+            "h": 62,
+            "sb": {
+                "lt": 0,
+                "lb": 0,
+                "rt": 0,
+                "rb": 0
+            },
+            "pp": {
+                "ft": "contain"
+            },
+            "pt": "image",
+            "data": {
+                "src": "https://test-hubert.oss-cn-beijing.aliyuncs.com/public/photo/a1.jpg",
+                "au": "https://image.baidu.com/"
+            }
+        }
+    ]
+}

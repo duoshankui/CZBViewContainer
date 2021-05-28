@@ -7,6 +7,18 @@
             "l": 8,
             "w": 356,
             "h": 87,
+            "pp": {
+                "objs" : [
+                    {
+                        "src": "https://img1.baidu.com/it/u=3970257974,253073270&fm=26",
+                        "au": "scheme1"
+                    },
+                    {
+                        "src": "https://img1.baidu.com/it/u=3970257974,253073270&fm=26",
+                        "au": "scheme1"
+                    }
+                ]
+            },
             "sm": {
                 "t": 0,
                 "b": 0,

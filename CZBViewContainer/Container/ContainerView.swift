@@ -23,8 +23,8 @@ extension ContainerViewProtocol {
 
 class ContainerView: UIView {
     
-    private var imgViewActions = [UIImageView: String]()
-    private var bannerActions = [ZCycleView: [String]]()
+    private var imgViewActions = [UIImageView: ImgItem]()
+    private var bannerActions = [ZCycleView: [ImgItem?]]()
     
     weak var delegate: ContainerViewProtocol?
     
@@ -92,44 +92,47 @@ private extension ContainerView {
     
     @discardableResult
     func createBannerView(withElement element: ViewItem) -> ZCycleView {
+        /// 解析数据
+        let data = element.data as? [[String: Any]]
+        let banners = data?.compactMap({ ImgItem(dict: $0) })
+        
+        /// 控件frame
         let frame = CGRect(x: scale*CGFloat(element.l), y: scale*CGFloat(element.t), width: scale*CGFloat(element.w), height: scale*CGFloat(element.h))
         let bannerView = ZCycleView(frame: frame)
         bannerView.addCorner(with: element.sb)
-        if let tm = element.tm {
+        bannerView.delegate = self
+        
+        let urls = banners?.compactMap({ $0.src })
+        bannerView.setUrlsGroup(urls ?? [])
+        if let tm = element.pp?.tm {
             let timeInterval = ceil(Double(tm)/1000)
             bannerView.timeInterval = Int(timeInterval)
         }
-        let img1 = UIImage(named: "home_banner_1")!
-        let img2 = UIImage(named: "home_banner_2")!
-        let img3 = UIImage(named: "home_banner_3")!
-
-        let imgs = [img1, img2, img3]
-        bannerView.setImagesGroup(imgs)
-        bannerView.delegate = self
-        
-        bannerActions[bannerView] = element.aus
+        bannerActions[bannerView] = banners
         return bannerView
     }
     
     @discardableResult
     func createImgView(withElement element: ViewItem) -> UIImageView {
+        let itemDict = element.data as? [String: Any]
+        let imgItem = ImgItem(dict: itemDict)
+        
         let frame = CGRect(x: scale*CGFloat(element.l), y: scale*CGFloat(element.t), width: scale*CGFloat(element.w), height: scale*CGFloat(element.h))
         let imgView = UIImageView(frame: frame)
         imgView.backgroundColor = UIColor.randomColor
         imgView.addCorner(with: element.sb)
         imgView.contentMode = .scaleToFill
-        imgViewActions[imgView] = element.au
-        imgView.kf.setImage(with: URL(string: element.src ?? ""))
+        imgView.kf.setImage(with: URL(string: imgItem.src ?? ""))
         imgView.addTapGesture(target: self, action: #selector(clickAction(_:)))
-        
+        imgViewActions[imgView] = imgItem
         return imgView
     }
     
     @objc func clickAction(_ tap: UITapGestureRecognizer) {
         if let imgView = tap.view as? UIImageView {
-            let actionUrl = imgViewActions[imgView]
+            let imgItem = imgViewActions[imgView]
             if delegate != nil {
-                delegate?.imgViewDidClick(imgView, actionUrl: actionUrl)
+                delegate?.imgViewDidClick(imgView, actionUrl: imgItem?.au)
             }
         }
     }
@@ -137,10 +140,10 @@ private extension ContainerView {
 
 extension ContainerView: ZCycleViewProtocol {
     func cycleView(_ cycleView: ZCycleView, didSelectIndex index: Int) {
-        if let actionUrls = bannerActions[cycleView] {
-            let actionUrl = actionUrls[index]
+        if let items = bannerActions[cycleView] {
+            let imgItem = items[index]
             if delegate != nil {
-                delegate?.cycleViewDidClick(cycleView, actionUrl: actionUrl)
+                delegate?.cycleViewDidClick(cycleView, actionUrl: imgItem?.au)
             }
         }
     }
@@ -158,10 +161,10 @@ extension UIView {
     /// 添加圆角
     fileprivate func addCorner(with border: Border?) {
         guard let border = border else { return }
-        let topLeft = border.topLeft
-        let topRight = border.topRight
-        let bottomLeft = border.bottomLeft
-        let bottomRight = border.bottomRight
+        let topLeft = border.lt
+        let topRight = border.rt
+        let bottomLeft = border.lb
+        let bottomRight = border.rb
         if topLeft > 0 || topRight > 0 || bottomLeft > 0 || bottomRight > 0 {
             let corner = CornerRadii(topLeft: CGFloat(topLeft), topRight: CGFloat(topRight), bottomLeft: CGFloat(bottomLeft), bottomRight: CGFloat(bottomRight))
             addCorner(cornnerRadii: corner)
