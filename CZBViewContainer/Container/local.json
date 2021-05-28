@@ -20,14 +20,14 @@
                 "r": 0
             },
             "sb": {
-                "topLeft": 0,
-                "topRight": 0,
-                "bottomLeft": 0,
-                "bottomRight": 0
+                "topLeft": 10,
+                "topRight": 10,
+                "bottomLeft": 20,
+                "bottomRight": 20
             },
             "pt": "banner",
             "tm": 1000,
-            "aus": ["123", "123"]
+            "aus": ["scheme1", "scheme2", "scheme3"]
         },
         {
             "t": 100,
@@ -52,7 +52,9 @@
                 "bottomLeft": 0,
                 "bottomRight": 0
             },
+            "au": "SkipH5",
             "pt": "image",
+            "src": "https://img1.baidu.com/it/u=3970257974,253073270&fm=26"
         },
         {
             "t": 100,
@@ -79,6 +81,7 @@
             },
             "au": "SkipH5",
             "pt": "image",
+            "src": "https://img1.baidu.com/it/u=3970257974,253073270&fm=26"
         }
     ]
 }

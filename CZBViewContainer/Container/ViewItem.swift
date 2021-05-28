@@ -31,6 +31,7 @@ struct ViewItem: HandyJSON {
     /// actionUrl
     var au: String?
     var aus: [String]?
+    var src: String?
 }
 
 struct Border: HandyJSON {

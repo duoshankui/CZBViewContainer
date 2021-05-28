@@ -119,10 +119,8 @@ private extension ContainerView {
         imgView.addCorner(with: element.sb)
         imgView.contentMode = .scaleToFill
         imgViewActions[imgView] = element.au
-        
-        imgView.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer(target: self, action: #selector(clickAction(_:)))
-        imgView.addGestureRecognizer(tap)
+        imgView.kf.setImage(with: URL(string: element.src ?? ""))
+        imgView.addTapGesture(target: self, action: #selector(clickAction(_:)))
         
         return imgView
     }
@@ -165,7 +163,15 @@ extension UIView {
         let bottomLeft = border.bottomLeft
         let bottomRight = border.bottomRight
         if topLeft > 0 || topRight > 0 || bottomLeft > 0 || bottomRight > 0 {
-            self.addCorner(cornnerRadii: CornerRadii(topLeft: CGFloat(topLeft), topRight: CGFloat(topRight), bottomLeft: CGFloat(bottomLeft), bottomRight: CGFloat(bottomRight)))
+            let corner = CornerRadii(topLeft: CGFloat(topLeft), topRight: CGFloat(topRight), bottomLeft: CGFloat(bottomLeft), bottomRight: CGFloat(bottomRight))
+            addCorner(cornnerRadii: corner)
         }
+    }
+
+    /// 添加点击手势
+    fileprivate func addTapGesture(target: Any?, action: Selector) {
+        isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: target, action: action)
+        addGestureRecognizer(tap)
     }
 }
