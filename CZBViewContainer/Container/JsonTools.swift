@@ -22,13 +22,17 @@ class JsonTools {
             return nil
         }
         
-        guard let json = String(data: jsonData as Data, encoding: .utf8) else {
-            return nil
-        }
+//        guard let json = String(data: jsonData as Data, encoding: .utf8) else {
+//            return nil
+//        }
         
-        if let model = ContainerItem.deserialize(from: json) {
+        if let model = try? JSONDecoder().decode(ContainerItem.self, from: jsonData as Data) {
             return model
         }
+        
+//        if let model = ContainerItem.deserialize(from: json) {
+//            return model
+//        }
         
         return nil
     }
