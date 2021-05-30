@@ -63,9 +63,7 @@ struct UnknownModel: Codable {
         let single = try decoder.singleValueContainer()
         if let data = try? single.decode(ImgItem.self)  {
             imgItem = data
-            banners = []
         } else if let data = try? single.decode([ImgItem].self) {
-            imgItem = nil
             banners = data
         }
     }

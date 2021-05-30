@@ -39,6 +39,10 @@ class ViewController: UIViewController {
     func loadNetWorkData() {
         let url = URL(string: ServerUrl)!
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard error == nil else {
+                print("请求数据失败")
+                return
+            }
             if let model = try? JSONDecoder().decode(ContainerItem.self, from: data!) {
                 DispatchQueue.main.async {
                     self.handleRequestData(model: model)

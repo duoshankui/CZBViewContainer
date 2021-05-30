@@ -145,13 +145,9 @@ extension ContainerView: ZCycleViewProtocol {
         }
     }
     
-    func cycleViewDidScrollToIndex(_ index: Int) {
-        
-    }
+    func cycleViewDidScrollToIndex(_ index: Int) {}
     
-    func cycleViewDidSelectedIndex(_ index: Int) {
-        
-    }
+    func cycleViewDidSelectedIndex(_ index: Int) {}
 }
 
 extension UIView {
