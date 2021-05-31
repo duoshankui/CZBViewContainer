@@ -8,6 +8,7 @@
 import UIKit
 import CZBCycleView
 import SnapKit
+import SwiftyJSON
 
 public let ServerUrl = "https://appdynamiccontainer.oss-cn-beijing.aliyuncs.com/test.autolayout/config.json"
 
@@ -39,11 +40,13 @@ class ViewController: UIViewController {
     func loadNetWorkData() {
         let url = URL(string: ServerUrl)!
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let json = String(data: data! as Data, encoding: .utf8) else {
+            guard error == nil else {
+                print("request fail")
                 return
             }
             
-            if let model = ContainerItem.deserialize(from: json) {
+            if let json = try? JSON(data: data!) {
+                let model = ContainerItem(json: json)
                 DispatchQueue.main.async {
                     self.handleRequestData(model: model)
                 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 class JsonTools {
     static let shared = JsonTools()
@@ -22,14 +23,10 @@ class JsonTools {
             return nil
         }
         
-        guard let json = String(data: jsonData as Data, encoding: .utf8) else {
+        guard let js = try? JSON(data: jsonData as Data) else {
             return nil
         }
         
-        if let model = ContainerItem.deserialize(from: json) {
-            return model
-        }
-        
-        return nil
+        return ContainerItem(json: js)
     }
 }

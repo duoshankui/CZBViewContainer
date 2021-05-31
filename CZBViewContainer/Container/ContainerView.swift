@@ -93,8 +93,7 @@ private extension ContainerView {
     @discardableResult
     func createBannerView(withElement element: ViewItem) -> ZCycleView {
         /// 解析数据
-        let data = element.data as? [[String: Any]]
-        let banners = data?.compactMap({ ImgItem(dict: $0) })
+        let banners = element.data as? [ImgItem]
         
         /// 控件frame
         let frame = CGRect(x: scale*CGFloat(element.l), y: scale*CGFloat(element.t), width: scale*CGFloat(element.w), height: scale*CGFloat(element.h))
@@ -114,15 +113,14 @@ private extension ContainerView {
     
     @discardableResult
     func createImgView(withElement element: ViewItem) -> UIImageView {
-        let itemDict = element.data as? [String: Any]
-        let imgItem = ImgItem(dict: itemDict)
+        let imgItem = element.data as? ImgItem
         
         let frame = CGRect(x: scale*CGFloat(element.l), y: scale*CGFloat(element.t), width: scale*CGFloat(element.w), height: scale*CGFloat(element.h))
         let imgView = UIImageView(frame: frame)
         imgView.backgroundColor = UIColor.randomColor
         imgView.addCorner(with: element.sb)
         imgView.contentMode = .scaleToFill
-        imgView.kf.setImage(with: URL(string: imgItem.src ?? ""))
+        imgView.kf.setImage(with: URL(string: imgItem?.src ?? ""))
         imgView.addTapGesture(target: self, action: #selector(clickAction(_:)))
         imgViewActions[imgView] = imgItem
         return imgView

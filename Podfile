@@ -15,6 +15,7 @@ target 'CZBViewContainer' do
   pod 'HandyJSON'
   pod 'CZBCycleView', :git => "https://gitlab.newlink.com/ios/czbcycleview.git", :branch => 'feature/ios10'
   pod 'SnapKit', '4.2.0'
+  pod 'SwiftyJSON', '~>4.0'
 
 
 end
