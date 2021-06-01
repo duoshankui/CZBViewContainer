@@ -9,7 +9,21 @@ import Foundation
 import HandyJSON
 import SwiftyJSON
 
-enum PluginType: String, HandyJSONEnum {
+/// 另一种写法, 等同于PluginType
+//enum TestType {
+//    case banner
+//    case image
+//
+//    init?(key: String) {
+//        switch key {
+//        case "banner": self = .banner
+//        case "image": self = .image
+//        default: return nil
+//        }
+//    }
+//}
+
+enum PluginType: String {
     case banner = "banner"
     case image = "image"
 }
@@ -30,6 +44,7 @@ struct ContainerItem {
 }
 
 struct ViewItem {
+//    var pt: TestType = .image
     var pt: PluginType = .image
     var t: Float = 0
     var l: Float = 0
@@ -44,6 +59,7 @@ struct ViewItem {
         guard json.type != .null else {
             return
         }
+//        pt = TestType(key: json["pt"].stringValue) ?? . image
         pt = PluginType(rawValue: json["pt"].stringValue) ?? .image
         t = json["t"].floatValue
         l = json["l"].floatValue
