@@ -1,6 +1,0 @@
-framework module CZBCycleView {
-  umbrella header "CZBCycleView-umbrella.h"
-
-  export *
-  module * { export * }
-}
