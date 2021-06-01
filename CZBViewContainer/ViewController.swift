@@ -43,10 +43,14 @@ class ViewController: UIViewController {
                 print("请求数据失败")
                 return
             }
-            if let model = try? JSONDecoder().decode(ContainerItem.self, from: data!) {
+            do {
+                let model = try JSONDecoder().decode(ContainerItem.self, from: data!)
                 DispatchQueue.main.async {
                     self.handleRequestData(model: model)
                 }
+                print("解析成功")
+            } catch {
+                print("解析失败")
             }
         }
         task.resume()

@@ -6,7 +6,11 @@
 //
 
 import Foundation
-import HandyJSON
+
+/**
+ 如果使用系统Codable协议解析JSON,
+ 可能出现的属性必须设置为可选类型，不能给默认值，否则会解析失败
+ */
 
 enum PluginType: String, Codable {
     case banner = "banner"
@@ -31,10 +35,10 @@ struct ViewItem: Codable {
 }
 
 struct Border: Codable {
-    var lt: Float = 0
-    var lb: Float = 0
-    var rt: Float = 0
-    var rb: Float = 0
+    var lt: Float?
+    var lb: Float?
+    var rt: Float?
+    var rb: Float?
 }
 
 struct Props: Codable {

@@ -154,10 +154,10 @@ extension UIView {
     /// 添加圆角
     fileprivate func addCorner(with border: Border?) {
         guard let border = border else { return }
-        let topLeft = border.lt
-        let topRight = border.rt
-        let bottomLeft = border.lb
-        let bottomRight = border.rb
+        let topLeft = border.lt ?? 0
+        let topRight = border.rt ?? 0
+        let bottomLeft = border.lb ?? 0
+        let bottomRight = border.rb ?? 0
         if topLeft > 0 || topRight > 0 || bottomLeft > 0 || bottomRight > 0 {
             let corner = CornerRadii(topLeft: CGFloat(topLeft), topRight: CGFloat(topRight), bottomLeft: CGFloat(bottomLeft), bottomRight: CGFloat(bottomRight))
             addCorner(cornnerRadii: corner)
